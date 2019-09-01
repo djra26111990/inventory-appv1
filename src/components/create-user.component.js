@@ -12,7 +12,7 @@ export default class CreateUser extends Component {
       username: ''
     }
   }
-
+  
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
@@ -28,7 +28,7 @@ export default class CreateUser extends Component {
 
     console.log(user);
 
-    axios.post('http://192.168.1.106:5000/users/add', user)
+    axios.post('http://190.74.223.119:5000/users/add', user)
       .then(res => console.log(res.data));
 
     this.setState({
