@@ -22,7 +22,6 @@ export default class CreateProducto extends Component {
       precio: 0,
       cantidad: 0,
       date: new Date()
-      //users: []
     }
   }
 
@@ -77,7 +76,7 @@ export default class CreateProducto extends Component {
 
     console.log(producto);
 
-    axios.post('http://localhost:5000/productos/add', producto)
+    axios.post('http://192.168.1.106:5000/productos/add', producto)
       .then(res => console.log(res.data));
 
     window.location = '/';

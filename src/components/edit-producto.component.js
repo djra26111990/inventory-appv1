@@ -22,12 +22,11 @@ export default class EditProducto extends Component {
       precio: 0,
       cantidad: 0,
       date: new Date()
-      //users: []
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/productos/'+this.props.match.params.id)
+    axios.get('http://192.168.1.106:5000/productos/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           nombreproducto: response.data.nombreproducto,
@@ -41,19 +40,6 @@ export default class EditProducto extends Component {
       .catch(function (error) {
         console.log(error);
       })
-
-    /*axios.get('http://localhost:5000/users/')
-      .then(response => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map(user => user.username),
-          })
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })*/
-
   }
 
   onChangeNombreproducto(e) {
@@ -106,7 +92,7 @@ export default class EditProducto extends Component {
 
     console.log(producto);
 
-    axios.post('http://localhost:5000/productos/update/' + this.props.match.params.id, producto)
+    axios.post('http://192.168.1.106:5000/productos/update/' + this.props.match.params.id, producto)
       .then(res => console.log(res.data));
 
     window.location = '/';

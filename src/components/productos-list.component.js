@@ -26,7 +26,7 @@ export default class ProductosList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/productos/')
+    axios.get('http://192.168.1.106:5000/productos/')
       .then(response => {
         this.setState({ productos: response.data })
       })
@@ -36,7 +36,7 @@ export default class ProductosList extends Component {
   }
 
   deleteProducto(id) {
-    axios.delete('http://localhost:5000/productos/'+id)
+    axios.delete('http://192.168.1.106:5000/productos/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({
