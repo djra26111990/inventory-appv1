@@ -76,7 +76,7 @@ export default class CreateProducto extends Component {
 
     console.log(producto);
 
-    axios.post('http://190.74.223.119:5000/productos/add', producto)
+    axios.post('http://127.0.0.1:5000/productos/add', producto)
       .then(res => console.log(res.data));
 
     window.location = '/';

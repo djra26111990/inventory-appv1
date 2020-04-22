@@ -26,7 +26,7 @@ export default class EditProducto extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://190.74.223.119:5000/productos/'+this.props.match.params.id)
+    axios.get('http://127.0.0.1:5000/productos/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           nombreproducto: response.data.nombreproducto,
@@ -92,7 +92,7 @@ export default class EditProducto extends Component {
 
     console.log(producto);
 
-    axios.post('http://190.74.223.119:5000/productos/update/' + this.props.match.params.id, producto)
+    axios.post('http://127.0.0.1:5000/productos/update/' + this.props.match.params.id, producto)
       .then(res => console.log(res.data));
 
     window.location = '/';
