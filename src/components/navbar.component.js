@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap'
 
-export default class Navbar extends Component {
+export default class NavbarComponent extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">Sistema de Inventario</Link>
-        <div className="collpase navbar-collapse">
-        <ul className="navbar-nav mr-auto">
-          <li className="navbar-item">
-          <Link to="/" className="nav-link">Productos</Link>
-          </li>
-          <li className="navbar-item">
-          <Link to="/create" className="nav-link">Crear producto nuevo</Link>
-          </li>
-          <li className="navbar-item">
-          <Link to="/user" className="nav-link">Crear usuario</Link>
-          </li>
-        </ul>
-        </div>
-      </nav>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand href="/">Sistema de Inventario</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="/">Productos</Nav.Link>
+            <Nav.Link href="/create">Crear producto nuevo</Nav.Link>
+            <Nav.Link href="/user">Crear nuevo usuario</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }

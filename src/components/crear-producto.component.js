@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { Form, Col, Button } from 'react-bootstrap';
+
 
 export default class CreateProducto extends Component {
   constructor(props) {
@@ -84,69 +86,75 @@ export default class CreateProducto extends Component {
 
   render() {
     return (
-    <div>
-      <h3>Crear nuevo producto</h3>
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group"> 
-          <label>Producto: </label>
-          <input  type="text"
-              required
-              className="form-control"
-              value={this.state.nombreproducto}
-              onChange={this.onChangeNombreproducto}
-              />
-        </div>
-        <div className="form-group"> 
-          <label>Marca: </label>
-          <input  type="text"
-              required
-              className="form-control"
-              value={this.state.marca}
-              onChange={this.onChangeMarca}
-              />
-        </div>
-        <div className="form-group"> 
-          <label>Modelo: </label>
-          <input  type="text"
-              required
-              className="form-control"
-              value={this.state.modelo}
-              onChange={this.onChangeModelo}
-              />
-        </div>
-        <div className="form-group">
-          <label>Precio $: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.precio}
-              onChange={this.onChangePrecio}
-              />
-        </div>
-        <div className="form-group">
-          <label>Cantidad: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.cantidad}
-              onChange={this.onChangeCantidad}
-              />
-        </div>
-        <div className="form-group">
-          <label>Fecha: </label>
-          <div>
+      <>
+      <h3>Crear producto</h3>
+      <Form onSubmit={this.onSubmit}>
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridProducto">
+            <Form.Label>Producto:</Form.Label>
+            <Form.Control 
+            type="text" 
+            placeholder="Nombre de producto" 
+            value={this.state.nombreproducto}
+            onChange={this.onChangeNombreproducto}/>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridMarca">
+            <Form.Label>Marca del producto:</Form.Label>
+            <Form.Control 
+            type="text" 
+            placeholder="Marca" 
+            value={this.state.marca}
+            onChange={this.onChangeMarca} />
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+        <Form.Group as={Col} controlId="formGridModelo">
+            <Form.Label>Modelo del producto:</Form.Label>
+            <Form.Control 
+            type="text" 
+            placeholder="Modelo" 
+            value={this.state.modelo}
+            onChange={this.onChangeModelo} />
+          </Form.Group>{' '}
+
+          <Form.Group as={Col} controlId="formGridPrecio">
+            <Form.Label>Precio del producto $:</Form.Label>
+            <Form.Control 
+            type="text" 
+            placeholder="$Precio" 
+            value={this.state.precio}
+            onChange={this.onChangePrecio} />
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+        <Form.Group as={Col} controlId="formGridCantidad">
+            <Form.Label>Cantidad del producto:</Form.Label>
+            <Form.Control 
+            type="text" 
+            placeholder="Cantidad" 
+            value={this.state.cantidad}
+            onChange={this.onChangeCantidad} />
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+        <Form.Group controlId="formGridFecha">
+            <Form.Label>Fecha de Ingreso:</Form.Label>{' '}
             <DatePicker
               selected={this.state.date}
               onChange={this.onChangeDate}
             />
-          </div>
-        </div>
+          </Form.Group>
+        </Form.Row>
 
-        <div className="form-group">
-          <input type="submit" value="Crear producto en inventario" className="btn btn-primary" />
-        </div>
-      </form>
-    </div>
+        <Button variant="primary" type="submit">
+          Crear producto en inventario
+        </Button>
+    </Form>
+    </>
     )
   }
 }

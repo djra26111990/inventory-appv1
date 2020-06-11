@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { StickyTable, Row, Cell } from 'react-sticky-table';
-
-
+import { Button, Table } from 'react-bootstrap';
 
 const Producto = props => (
-   <Row>
-     <Cell>{props.producto.nombreproducto}</Cell>
-     <Cell>{props.producto.marca}</Cell>
-     <Cell>{props.producto.modelo}</Cell>
-     <Cell>{props.producto.precio}</Cell>
-    <Cell>{props.producto.cantidad}</Cell>
-    <Cell>{props.producto.date.substring(0,10)}</Cell>
-    <Cell>
-      <Link to={"/edit/"+props.producto._id}>edit</Link> |  <a href="#" onClick={() => { props.deleteProducto(props.producto._id) }}>delete</a>
-    </Cell>
-  </Row>
+  <tr>
+     <td>{props.producto.nombreproducto}</td>
+     <td>{props.producto.marca}</td>
+     <td>{props.producto.modelo}</td>
+     <td>{props.producto.precio}</td>
+    <td>{props.producto.cantidad}</td>
+    <td>{props.producto.date.substring(0,10)}</td>
+    <td>
+      <Button variant="success" href={"/edit/"+props.producto._id}>Edit</Button> | <Button variant="danger" onClick={() => { props.deleteProducto(props.producto._id) }}>Delete</Button>
+    </td>
+  </tr>
 )
 
 export default class ProductosList extends Component {
@@ -57,22 +54,22 @@ export default class ProductosList extends Component {
     return (
       <div>
         <h3>Listado de productos en inventario</h3>
-         <StickyTable>
-           <thead className="thead-light">
-             <Row>
-               <Cell>Nombre de producto</Cell>
-               <Cell>Marca</Cell>
-               <Cell>Modelo</Cell>
-               <Cell>Precio</Cell>
-               <Cell>Cantidad</Cell>
-               <Cell>Date</Cell>
-              <Cell>Accciones</Cell>
-            </Row>
+         <Table responsive hover striped borderless>
+           <thead>
+             <tr>
+               <th>Nombre de producto</th>
+               <th>Marca</th>
+               <th>Modelo</th>
+               <th>Precio</th>
+               <th>Cantidad</th>
+               <th>Date</th>
+              <th>Accciones</th>
+            </tr>
           </thead>
           <tbody>
             { this.productoList() }
           </tbody>
-        </StickyTable>
+        </Table>
       </div>
     )
   }
